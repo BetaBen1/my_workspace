@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -162,12 +163,28 @@ public class Main extends JFrame {
 		
 	}
 	
-	public void darkMode(){
-		if(rdbtnDarkMode.isSelected()){
-			contentPane.setBackground(Color.black);
-		}else{
-			contentPane.setBackground(Color.white);
-		}
+	public void runThread(){
+		Thread thread = new Thread(){
+			@Override
+			public void run(){
+//				if(rdbtnDarkMode.isSelected()){
+//					contentPane.setBackground(Color.black);
+//				}else{
+//					contentPane.setBackground(Color.white);
+//				}
+				if(nameTextField.getText().isEmpty()){
+					btnAddItem.setEnabled(false);
+				} else {
+					btnAddItem.setEnabled(true);
+				}
+				try{
+					sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		thread.start();
 	}
 	
 }
