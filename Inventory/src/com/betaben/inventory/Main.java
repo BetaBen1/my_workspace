@@ -161,26 +161,46 @@ public class Main extends JFrame {
 		
 		contentPane.getRootPane().setDefaultButton(btnAddItem);
 		
+		runThread();
+		
 	}
 	
 	public void runThread(){
 		Thread thread = new Thread(){
 			@Override
 			public void run(){
-//				if(rdbtnDarkMode.isSelected()){
-//					contentPane.setBackground(Color.black);
-//				}else{
-//					contentPane.setBackground(Color.white);
-//				}
-				if(nameTextField.getText().isEmpty()){
-					btnAddItem.setEnabled(false);
-				} else {
-					btnAddItem.setEnabled(true);
-				}
-				try{
-					sleep(50);
-				} catch (InterruptedException e) {
+				while(true){
+					if(rdbtnDarkMode.isSelected()){
+						contentPane.setBackground(Color.darkGray);
+						rdbtnDarkMode.setForeground(Color.white);
+						lblInventory.setForeground(Color.white);
+						lbldisplay.setForeground(Color.white);
+						lblItemName.setForeground(Color.white);
+						lblItemPrice.setForeground(Color.white);
+						nameTextField.setBackground(Color.lightGray);
+						priceTextField.setBackground(Color.lightGray);
+						scrollPanel.setBackground(Color.lightGray);
+					}else{
+						contentPane.setBackground(Color.lightGray);
+						rdbtnDarkMode.setForeground(Color.black);
+						lblInventory.setForeground(Color.black);
+						lbldisplay.setForeground(Color.black);
+						lblItemName.setForeground(Color.black);
+						lblItemPrice.setForeground(Color.black);
+						nameTextField.setBackground(Color.white);
+						priceTextField.setBackground(Color.white);
+						scrollPanel.setBackground(Color.white);
+					}
+					if(nameTextField.getText().isEmpty()){
+						btnAddItem.setEnabled(false);
+					} else {
+						btnAddItem.setEnabled(true);
+					}
+					try{
+						sleep(100);
+					} catch (InterruptedException e) {
 					e.printStackTrace();
+					}
 				}
 			}
 		};
