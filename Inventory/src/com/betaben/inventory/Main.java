@@ -38,6 +38,7 @@ public class Main extends JFrame {
 	JTextField nameTextField;
 	JTextField priceTextField;
 	JRadioButton rdbtnDarkMode;
+	JButton btnSearch;
 	
 	public static String nameText;
 	public static Double priceText;
@@ -73,9 +74,9 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{274, 141, 0};
-		gbl_contentPane.rowHeights = new int[]{16, 26, 16, 26, 45, 44, 47, 0};
+		gbl_contentPane.rowHeights = new int[]{16, 26, 16, 26, 45, 0, 44, 47, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		btnAddItem = new JButton("Add Item");
@@ -159,7 +160,7 @@ public class Main extends JFrame {
 		scrollPane.setViewportView(scrollPanel);
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridheight = 6;
+		gbc_scrollPane.gridheight = 7;
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 1;
 		contentPane.add(scrollPane, gbc_scrollPane);
@@ -196,18 +197,32 @@ public class Main extends JFrame {
 		gbc_lbldisplay.gridx = 0;
 		gbc_lbldisplay.gridy = 4;
 		contentPane.add(lbldisplay, gbc_lbldisplay);
+		
+		btnSearch = new JButton("Search");
+		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
+		gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSearch.gridx = 0;
+		gbc_btnSearch.gridy = 5;
+		btnSearch.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				search();
+			}
+		});
+		contentPane.add(btnSearch, gbc_btnSearch);
+		
 		GridBagConstraints gbc_rdbtnDarkMode = new GridBagConstraints();
 		gbc_rdbtnDarkMode.anchor = GridBagConstraints.NORTHWEST;
 		gbc_rdbtnDarkMode.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnDarkMode.gridx = 0;
-		gbc_rdbtnDarkMode.gridy = 5;
+		gbc_rdbtnDarkMode.gridy = 6;
 		contentPane.add(rdbtnDarkMode, gbc_rdbtnDarkMode);
+		
 		GridBagConstraints gbc_btnAddItem = new GridBagConstraints();
 		gbc_btnAddItem.anchor = GridBagConstraints.SOUTH;
 		gbc_btnAddItem.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAddItem.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAddItem.gridx = 0;
-		gbc_btnAddItem.gridy = 6;
+		gbc_btnAddItem.gridy = 7;
 		contentPane.add(btnAddItem, gbc_btnAddItem);
 		
 		contentPane.getRootPane().setDefaultButton(btnAddItem);
@@ -256,6 +271,21 @@ public class Main extends JFrame {
 			}
 		};
 		thread.start();
+	}
+	
+	public void search(){
+		JFrame searchFrame = new JFrame();
+		searchFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		searchFrame.setBounds(600, 600, 600, 600);
+		searchFrame.setVisible(true);
+		
+		JPanel searchContentPane = new JPanel();
+		searchContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		searchFrame.setContentPane(searchContentPane);
+		
+		JButton button = new JButton("Search");
+		button.setBounds(10, 10, 300, 300);
+		searchContentPane.add(button);
 	}
 	
 }
