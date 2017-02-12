@@ -1,0 +1,43 @@
+package com.betaben.inventory;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class SearchFrame extends JFrame {
+
+	private JPanel contentPane;
+	private JButton button = new JButton();
+	private JTextField textField;
+
+	public SearchFrame() {
+		setVisible(true);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(700, 100, 600, 600);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		button = new JButton("Search");
+		button.setBounds(80, 56, 294, 108);
+		button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+			}
+		});
+		contentPane.add(button);
+		
+		textField = new JTextField();
+		textField.setBounds(12, 13, 408, 22);
+		contentPane.add(textField);
+		textField.setColumns(10);
+
+	}
+}

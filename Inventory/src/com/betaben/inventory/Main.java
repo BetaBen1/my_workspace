@@ -3,24 +3,22 @@ package com.betaben.inventory;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Rectangle;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JRadioButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 public class Main extends JFrame {
 
@@ -166,11 +164,6 @@ public class Main extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
 		rdbtnDarkMode = new JRadioButton("Dark Mode");
-		rdbtnDarkMode.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				
-			}
-		});
 		
 		lblItemPrice = new JLabel("Item Price:");
 		GridBagConstraints gbc_lblItemPrice = new GridBagConstraints();
@@ -205,7 +198,7 @@ public class Main extends JFrame {
 		gbc_btnSearch.gridy = 5;
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				search();
+				SearchFrame searchFrame = new SearchFrame();
 			}
 		});
 		contentPane.add(btnSearch, gbc_btnSearch);
@@ -270,22 +263,6 @@ public class Main extends JFrame {
 				}
 			}
 		};
-		thread.start();
-	}
-	
-	public void search(){
-		JFrame searchFrame = new JFrame();
-		searchFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		searchFrame.setBounds(600, 600, 600, 600);
-		searchFrame.setVisible(true);
-		
-		JPanel searchContentPane = new JPanel();
-		searchContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		searchFrame.setContentPane(searchContentPane);
-		
-		JButton button = new JButton("Search");
-		button.setBounds(10, 10, 300, 300);
-		searchContentPane.add(button);
-	}
-	
+		thread.start();	
+	}	
 }
