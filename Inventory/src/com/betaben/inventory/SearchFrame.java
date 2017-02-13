@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
 
 public class SearchFrame extends JFrame {
 
@@ -19,6 +20,7 @@ public class SearchFrame extends JFrame {
 	private JTextField textField;
 	private JScrollPane scrollPane;
 	private JPanel scrollPanel;
+	private JLabel label;
 
 	public SearchFrame() {
 		setVisible(true);
@@ -36,10 +38,10 @@ public class SearchFrame extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				String text = textField.getText();
 				for(ItemPanel panels : Main.hashes.keySet()){
-					if(Main.hashes.get(panels).getName() == "apple"){
-						System.out.println("This item is in your inventory.");
+					if(Main.hashes.get(panels).getName().equals(text)){
+						label.setText("This item is in your inventory.");
 					} else {
-						System.out.println("This item is not in your inventory.");
+						label.setText("This item is not in your inventory.");
 					}
 				}
 			}
@@ -60,6 +62,10 @@ public class SearchFrame extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setViewportView(scrollPanel);
 		contentPane.add(scrollPane);
+		
+		label = new JLabel("");
+		label.setBounds(12, 154, 338, 16);
+		contentPane.add(label);
 		
 	}
 }
