@@ -40,7 +40,7 @@ public class SearchFrame extends JFrame {
 					if(Main.hashes.get(panels).getName().equals(text)){
 						label.setText("This item is in your inventory.");
 						scrollPanel.removeAll();
-						scrollPanel.add(Main.hashes.get()); // Here I want to get the panel from the hashmap and add it to my scrollPanel.
+						scrollPanel.add(Main.hashes.get(panels).getClass(), Main.hashes.get(panels));
 						scrollPanel.revalidate();
 						scrollPanel.repaint();
 						
