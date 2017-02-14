@@ -24,9 +24,8 @@ public class SearchFrame extends JFrame {
 
 	public SearchFrame() {
 		setVisible(true);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(700, 100, 600, 600);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setBounds(700, 100, 545, 238);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -40,6 +39,26 @@ public class SearchFrame extends JFrame {
 				for(ItemPanel panels : Main.hashes.keySet()){
 					if(Main.hashes.get(panels).getName().equals(text)){
 						label.setText("This item is in your inventory.");
+						scrollPanel.removeAll();
+						scrollPanel.add(Main.hashes.get(panels).getClass(), Main.hashes.get(panels));
+						scrollPanel.revalidate();
+						scrollPanel.repaint();
+						
+						scrollPane.revalidate();
+						scrollPane.repaint();
+						
+						contentPane.revalidate();
+						contentPane.repaint();
+						
+						Main.scrollPanel.revalidate();
+						Main.scrollPanel.repaint();
+						
+						Main.scrollPane.revalidate();
+						Main.scrollPane.repaint();
+						
+						Main.contentPane.revalidate();
+						Main.contentPane.repaint();
+						break;
 					} else {
 						label.setText("This item is not in your inventory.");
 					}
@@ -58,7 +77,7 @@ public class SearchFrame extends JFrame {
 		scrollPanel.setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(362, 13, 208, 527);
+		scrollPane.setBounds(362, 13, 151, 165);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setViewportView(scrollPanel);
 		contentPane.add(scrollPane);
@@ -66,6 +85,8 @@ public class SearchFrame extends JFrame {
 		label = new JLabel("");
 		label.setBounds(12, 154, 338, 16);
 		contentPane.add(label);
+		
+		contentPane.getRootPane().setDefaultButton(button);
 		
 	}
 }

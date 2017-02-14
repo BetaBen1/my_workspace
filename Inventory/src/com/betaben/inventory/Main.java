@@ -24,10 +24,10 @@ public class Main extends JFrame {
 
 	static Main frame;
 	
-	private JPanel contentPane;
+	public static JPanel contentPane;
 
-	JPanel scrollPanel;
-	JScrollPane scrollPane;
+	static JPanel scrollPanel;
+	static JScrollPane scrollPane;
 	JLabel lblInventory;
 	JLabel lblItemName;
 	JLabel lblItemPrice;
@@ -95,7 +95,7 @@ public class Main extends JFrame {
 					lbldisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
 				}
 				
-				ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceTextField.getText());
+				ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceText);
 				ItemPanel.yPos += 75;
 				scrollPanel.add(panel);
 				
@@ -106,9 +106,7 @@ public class Main extends JFrame {
 				
 				System.out.println("\nItem Name: \tItem Price:");
 				for(ItemPanel panels : hashes.keySet()){
-					
 					System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
-					
 				}
 				
 				scrollPanel.revalidate();

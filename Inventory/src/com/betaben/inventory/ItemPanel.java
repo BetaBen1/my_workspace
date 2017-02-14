@@ -21,9 +21,6 @@ public class ItemPanel extends JPanel {
 	public static int yPos;
 	private JPanel panel = null;
 	
-	/**
-	 * Create the panel.
-	 */
 	public ItemPanel(JPanel panel, String nameText, String priceText) {
 		setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		setBounds(0, yPos, 100, 70);
@@ -43,7 +40,6 @@ public class ItemPanel extends JPanel {
 			}
 		});
 		add(btnRemove);
-
 	}
 
 	public void remove(){
@@ -53,12 +49,10 @@ public class ItemPanel extends JPanel {
 		//Main.library.removeItem(Main.hashes.get(this));
 		System.out.println("\nItem Name: \tItem Price:");
 		for(ItemPanel panels : Main.hashes.keySet()){
-			
 			if(panels.getY()>oldPos){
 				panels.setBounds(panels.getX(), panels.getY()-75, panels.getWidth(), panels.getHeight());
 			}
 			System.out.println(Main.hashes.get(panels).getName() + "\t\t $" + Main.hashes.get(panels).getPrice());
-			
 		}
 		yPos -= 75;
 		panel.revalidate();

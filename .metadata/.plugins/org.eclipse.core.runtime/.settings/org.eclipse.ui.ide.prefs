@@ -1,11 +1,10 @@
+=\=\=\=\=\=\=
+<<<<<<<=Updated upstream
+>>>>>>>=Stashed changes
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
 IMPORT_FILES_AND_FOLDERS_TYPE=23,1
 PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
-<<<<<<< Updated upstream
 platformState=1484363885714
-=======
-platformState=1454296609666
->>>>>>> Stashed changes
 quickStart=false
 tipsAndTricks=true
