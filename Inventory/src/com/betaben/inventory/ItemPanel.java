@@ -19,7 +19,7 @@ public class ItemPanel extends JPanel {
 	
 	public static int pos;
 	public static int yPos;
-	private JPanel panel = null;
+	private JPanel panel;
 	
 	public ItemPanel(JPanel panel, String nameText, String priceText) {
 		setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -46,7 +46,7 @@ public class ItemPanel extends JPanel {
 		int oldPos = panel.getY();
 		panel.remove(this);
 		Main.hashes.remove(this);
-		//Main.library.removeItem(Main.hashes.get(this));
+		//Main.library.removeItem(Main.hashes.geasdft(this));
 		System.out.println("\nItem Name: \tItem Price:");
 		for(ItemPanel panels : Main.hashes.keySet()){
 			if(panels.getY()>oldPos){
@@ -55,8 +55,30 @@ public class ItemPanel extends JPanel {
 			System.out.println(Main.hashes.get(panels).getName() + "\t\t $" + Main.hashes.get(panels).getPrice());
 		}
 		yPos -= 75;
-		panel.revalidate();
-		panel.repaint();
+		
+		SearchFrame.scrollPanel.removeAll();
+		refresh();
+		
+	}
+	
+	public void refresh(){
+		SearchFrame.scrollPanel.revalidate();
+		SearchFrame.scrollPanel.repaint();
+		
+		SearchFrame.scrollPane.revalidate();
+		SearchFrame.scrollPane.repaint();
+		
+		SearchFrame.contentPane.revalidate();
+		SearchFrame.contentPane.repaint();
+		
+		Main.scrollPanel.revalidate();
+		Main.scrollPanel.repaint();
+		
+		Main.scrollPane.revalidate();
+		Main.scrollPane.repaint();
+		
+		Main.contentPane.revalidate();
+		Main.contentPane.repaint();
 	}
 	
 }

@@ -15,11 +15,11 @@ import javax.swing.JLabel;
 
 public class SearchFrame extends JFrame {
 
-	private JPanel contentPane;
+	public static JPanel contentPane;
 	private JButton button = new JButton();
 	private JTextField textField;
-	private JScrollPane scrollPane;
-	private JPanel scrollPanel;
+	public static JScrollPane scrollPane;
+	public static JPanel scrollPanel;
 	private JLabel label;
 
 	public SearchFrame() {
@@ -38,29 +38,16 @@ public class SearchFrame extends JFrame {
 				String text = textField.getText();
 				for(ItemPanel panels : Main.hashes.keySet()){
 					if(Main.hashes.get(panels).getName().equals(text)){
+						System.out.println("This item is in your inventory.");
 						label.setText("This item is in your inventory.");
-						scrollPanel.removeAll();
-						scrollPanel.add(Main.hashes.get()); // Here I want to get the panel from the hashmap and add it to my scrollPanel.
-						scrollPanel.revalidate();
-						scrollPanel.repaint();
-						
-						scrollPane.revalidate();
-						scrollPane.repaint();
-						
-						contentPane.revalidate();
-						contentPane.repaint();
-						
-						Main.scrollPanel.revalidate();
-						Main.scrollPanel.repaint();
-						
-						Main.scrollPane.revalidate();
-						Main.scrollPane.repaint();
-						
-						Main.contentPane.revalidate();
-						Main.contentPane.repaint();
+						scrollPanel.add(panels);
+						refresh();
 						break;
 					} else {
+						System.out.println("This item is not in your inventory.");
 						label.setText("This item is not in your inventory.");
+						scrollPanel.removeAll();
+						refresh();
 					}
 				}
 			}
@@ -87,6 +74,18 @@ public class SearchFrame extends JFrame {
 		contentPane.add(label);
 		
 		contentPane.getRootPane().setDefaultButton(button);
+	}
+	
+	public void refresh(){
+		
+		scrollPanel.revalidate();
+		scrollPanel.repaint();
+		
+		scrollPane.revalidate();
+		scrollPane.repaint();
+		
+		contentPane.revalidate();
+		contentPane.repaint();
 		
 	}
 }

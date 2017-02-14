@@ -35,7 +35,7 @@ public class Main extends JFrame {
 	JButton btnAddItem;
 	JTextField nameTextField;
 	JTextField priceTextField;
-	JRadioButton rdbtnDarkMode;
+//	JRadioButton rdbtnDarkMode;
 	JButton btnSearch;
 	
 	public static String nameText;
@@ -161,7 +161,7 @@ public class Main extends JFrame {
 		gbc_scrollPane.gridy = 1;
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
-		rdbtnDarkMode = new JRadioButton("Dark Mode");
+//		rdbtnDarkMode = new JRadioButton("Dark Mode");
 		
 		lblItemPrice = new JLabel("Item Price:");
 		GridBagConstraints gbc_lblItemPrice = new GridBagConstraints();
@@ -201,12 +201,12 @@ public class Main extends JFrame {
 		});
 		contentPane.add(btnSearch, gbc_btnSearch);
 		
-		GridBagConstraints gbc_rdbtnDarkMode = new GridBagConstraints();
-		gbc_rdbtnDarkMode.anchor = GridBagConstraints.NORTHWEST;
-		gbc_rdbtnDarkMode.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnDarkMode.gridx = 0;
-		gbc_rdbtnDarkMode.gridy = 6;
-		contentPane.add(rdbtnDarkMode, gbc_rdbtnDarkMode);
+//		GridBagConstraints gbc_rdbtnDarkMode = new GridBagConstraints();
+//		gbc_rdbtnDarkMode.anchor = GridBagConstraints.NORTHWEST;
+//		gbc_rdbtnDarkMode.insets = new Insets(0, 0, 5, 5);
+//		gbc_rdbtnDarkMode.gridx = 0;
+//		gbc_rdbtnDarkMode.gridy = 6;
+//		contentPane.add(rdbtnDarkMode, gbc_rdbtnDarkMode);
 		
 		GridBagConstraints gbc_btnAddItem = new GridBagConstraints();
 		gbc_btnAddItem.anchor = GridBagConstraints.SOUTH;
@@ -227,34 +227,34 @@ public class Main extends JFrame {
 			@Override
 			public void run(){
 				while(true){
-					if(rdbtnDarkMode.isSelected()){
-						contentPane.setBackground(Color.darkGray);
-						rdbtnDarkMode.setForeground(Color.white);
-						lblInventory.setForeground(Color.white);
-						lbldisplay.setForeground(Color.white);
-						lblItemName.setForeground(Color.white);
-						lblItemPrice.setForeground(Color.white);
-						nameTextField.setBackground(Color.lightGray);
-						priceTextField.setBackground(Color.lightGray);
-						scrollPanel.setBackground(Color.lightGray);
-					}else{
-						contentPane.setBackground(Color.lightGray);
-						rdbtnDarkMode.setForeground(Color.black);
-						lblInventory.setForeground(Color.black);
-						lbldisplay.setForeground(Color.black);
-						lblItemName.setForeground(Color.black);
-						lblItemPrice.setForeground(Color.black);
-						nameTextField.setBackground(Color.white);
-						priceTextField.setBackground(Color.white);
-						scrollPanel.setBackground(Color.white);
-					}
+//					if(rdbtnDarkMode.isSelected()){
+//						contentPane.setBackground(Color.darkGray);
+//						rdbtnDarkMode.setForeground(Color.white);
+//						lblInventory.setForeground(Color.white);
+//						lbldisplay.setForeground(Color.white);
+//						lblItemName.setForeground(Color.white);
+//						lblItemPrice.setForeground(Color.white);
+//						nameTextField.setBackground(Color.lightGray);
+//						priceTextField.setBackground(Color.lightGray);
+//						scrollPanel.setBackground(Color.lightGray);
+//					}else{
+//						contentPane.setBackground(Color.lightGray);
+//						rdbtnDarkMode.setForeground(Color.black);
+//						lblInventory.setForeground(Color.black);
+//						lbldisplay.setForeground(Color.black);
+//						lblItemName.setForeground(Color.black);
+//						lblItemPrice.setForeground(Color.black);
+//						nameTextField.setBackground(Color.white);
+//						priceTextField.setBackground(Color.white);
+//						scrollPanel.setBackground(Color.white);
+//					}
 					if(nameTextField.getText().isEmpty()){
 						btnAddItem.setEnabled(false);
 					} else {
 						btnAddItem.setEnabled(true);
 					}
 					try{
-						sleep(100);
+						sleep(150);
 					} catch (InterruptedException e) {
 					e.printStackTrace();
 					}
