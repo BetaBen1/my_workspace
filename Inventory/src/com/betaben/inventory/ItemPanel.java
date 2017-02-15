@@ -44,7 +44,7 @@ public class ItemPanel extends JPanel {
 
 	public void remove(){
 		int oldPos = panel.getY();
-		panel.remove(this);
+		//panel.remove(this);
 		Main.hashes.remove(this);
 		//Main.library.removeItem(Main.hashes.geasdft(this));
 		System.out.println("\nItem Name: \tItem Price:");
@@ -55,22 +55,11 @@ public class ItemPanel extends JPanel {
 			System.out.println(Main.hashes.get(panels).getName() + "\t\t $" + Main.hashes.get(panels).getPrice());
 		}
 		yPos -= 75;
-		
 		SearchFrame.scrollPanel.removeAll();
 		refresh();
-		
 	}
 	
 	public void refresh(){
-		SearchFrame.scrollPanel.revalidate();
-		SearchFrame.scrollPanel.repaint();
-		
-		SearchFrame.scrollPane.revalidate();
-		SearchFrame.scrollPane.repaint();
-		
-		SearchFrame.contentPane.revalidate();
-		SearchFrame.contentPane.repaint();
-		
 		Main.scrollPanel.revalidate();
 		Main.scrollPanel.repaint();
 		
@@ -79,6 +68,15 @@ public class ItemPanel extends JPanel {
 		
 		Main.contentPane.revalidate();
 		Main.contentPane.repaint();
+		
+		SearchFrame.scrollPanel.revalidate();
+		SearchFrame.scrollPanel.repaint();
+		
+		SearchFrame.scrollPane.revalidate();
+		SearchFrame.scrollPane.repaint();
+		
+		SearchFrame.contentPane.revalidate();
+		SearchFrame.contentPane.repaint();
 	}
 	
 }
