@@ -1,20 +1,24 @@
 package betaben.montyhallparadox;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane;
+	public int selection;
+	public Random rand = new Random();
 
 	/**
 	 * Launch the application.
@@ -48,7 +52,16 @@ public class Main extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
+		
+		
 		JButton btnDoor1 = new JButton("Door 1");
+		btnDoor1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int n = rand.nextInt(3)+1;
+				System.out.println(n);
+				selection = 1;
+			}
+		});
 		btnDoor1.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_button = new GridBagConstraints();
 		gbc_button.anchor = GridBagConstraints.WEST;
@@ -58,6 +71,13 @@ public class Main extends JFrame {
 		contentPane.add(btnDoor1, gbc_button);
 		
 		JButton btnDoor2 = new JButton("Door 2");
+		btnDoor2.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int n = rand.nextInt(3)+1;
+				System.out.println(n);
+				selection = 2;
+			}
+		});
 		GridBagConstraints gbc_button_1 = new GridBagConstraints();
 		gbc_button_1.insets = new Insets(0, 0, 0, 5);
 		gbc_button_1.gridx = 1;
@@ -65,6 +85,13 @@ public class Main extends JFrame {
 		contentPane.add(btnDoor2, gbc_button_1);
 		
 		JButton btnDoor3 = new JButton("Door 3");
+		btnDoor3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				int n = rand.nextInt(3)+1;
+				System.out.println(n);
+				selection = 3;
+			}
+		});
 		GridBagConstraints gbc_button_2 = new GridBagConstraints();
 		gbc_button_2.anchor = GridBagConstraints.EAST;
 		gbc_button_2.gridx = 2;
