@@ -127,12 +127,37 @@ public class Main extends JFrame {
 		System.out.println("Your Choice: " + selection);
 		if(selection == n){
 			System.out.println("You chose the correct door.");
-		} 
-		if(selection != n){
-			System.out.println("You did not choose the correct door.");
 		} else {
 			System.out.println("You must first choose a door.");
 		}
 	}
+	
+//	public void runThread(){
+//		Thread t = new Thread(){
+//			@Override
+//			public void run(){
+//				while(true){
+//					if(btnDoor1.isSelected()){
+//						btnDoor2.setSelected(false);
+//						btnDoor3.setSelected(false);
+//					}
+//					if(btnDoor2.isSelected()){
+//						btnDoor1.setSelected(false);
+//						btnDoor3.setSelected(false);
+//					}
+//					if(btnDoor3.isSelected()){
+//						btnDoor1.setSelected(false);
+//						btnDoor2.setSelected(false);
+//					}
+//					try {
+//						sleep(150);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//		};
+//		t.start();
+//	}
 
 }

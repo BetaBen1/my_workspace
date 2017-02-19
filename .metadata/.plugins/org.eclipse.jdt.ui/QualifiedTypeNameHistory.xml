@@ -12,4 +12,5 @@
 <fullyQualifiedTypeName name="com.betaben.inventory.SearchFrame"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+<fullyQualifiedTypeName name="javax.swing.JToggleButton"/>
 </qualifiedTypeNameHistroy>
