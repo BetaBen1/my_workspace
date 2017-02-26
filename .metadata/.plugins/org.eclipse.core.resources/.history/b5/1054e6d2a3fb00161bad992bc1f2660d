@@ -72,36 +72,30 @@ public class Main extends JFrame {
 		btnAddItem.setBounds(5, 113, 269, 29);
 		btnAddItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				if(priceTextField.getText().matches(".*[a-z].*")){
-					lbldisplay.setText("Error: Invalid Price");
+				String vowels = "aeiou";
+				nameText = nameTextField.getText();
+				Item item = new Item(nameText, priceText);
+				if(vowels.indexOf(Character.toLowerCase(nameText.charAt(0))) != -1){
+					lbldisplay.setText("<html>An " + nameText + " was added to your inventory.<html>");
 				} else {
-					String vowels = "aeiou";
-					nameText = nameTextField.getText();
-					Item item = new Item(nameText, priceText);
-					if(vowels.indexOf(Character.toLowerCase(nameText.charAt(0))) != -1){
-						lbldisplay.setText("<html>An " + nameText + " was added to your inventory.<html>");
-					} else {
-						lbldisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
-					}
-					priceText = Double.parseDouble(priceTextField.getText());
-					ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceText);
-					ItemPanel.yPos += 75;
-					scrollPanel.add(panel);
-				
-					hashes.put(panel, item);
-				
-					nameTextField.setText("");
-					priceTextField.setText("");
-				
-					System.out.println("\nItem Name: \tItem Price:");
-					for(ItemPanel panels : hashes.keySet()){
-						System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
-					}
-					lbldisplay.setText("");
-					
-					refresh();
+					lbldisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
 				}
 				
+				ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceText);
+				ItemPanel.yPos += 75;
+				scrollPanel.add(panel);
+				
+				hashes.put(panel, item);
+				
+				nameTextField.setText("");
+				priceTextField.setText("");
+				
+				System.out.println("\nItem Name: \tItem Price:");
+				for(ItemPanel panels : hashes.keySet()){
+					System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
+				}
+				
+				refresh();
 			}
 		});
 		contentPane.add(btnAddItem);
@@ -182,8 +176,22 @@ public class Main extends JFrame {
 					} else {
 						btnAddItem.setEnabled(true);
 					}
+					if(priceTextField.getText().isEmpty()){
+						priceText = 0.00;
+						lbldisplay.setText("");
+					} else {
+						for(String i : letters){
+							if(priceTextField.getText().matches(i)){
+								lbldisplay.setText("Error: Enter a valid price.");
+								break;
+							} else {
+								lbldisplay.setText("");
+							}
+							priceText = Double.parseDouble(priceTextField.getText());
+						}
+					}
 					try{
-						sleep(50);
+						sleep(150);
 					} catch (InterruptedException e) {
 					e.printStackTrace();
 					}
