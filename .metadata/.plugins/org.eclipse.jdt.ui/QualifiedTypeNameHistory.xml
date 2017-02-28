@@ -4,7 +4,6 @@
 <fullyQualifiedTypeName name="com.betaben.inventory.Item"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.time.chrono.MinguoChronology"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.awt.Rectangle"/>
 <fullyQualifiedTypeName name="javax.swing.JTextField"/>
@@ -15,4 +14,5 @@
 <fullyQualifiedTypeName name="javax.swing.JToggleButton"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
 </qualifiedTypeNameHistroy>
