@@ -1,5 +1,6 @@
 package betaben.inventoryv2;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.List;
@@ -37,7 +38,7 @@ public class Main extends JFrame {
 	public static String nameText;
 	public static Double priceText;
 	
-	String[] letters = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+	//String[] letters = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 	
 	public static HashMap<ItemPanel, Item> hashes = new HashMap<ItemPanel, Item>();
 	
@@ -72,36 +73,34 @@ public class Main extends JFrame {
 		btnAddItem.setBounds(5, 113, 269, 29);
 		btnAddItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				if(priceTextField.getText().matches(".*[a-z].*")){
-					lbldisplay.setText("Error: Invalid Price");
+				String vowels = "aeiou";
+				nameText = nameTextField.getText();
+				Item item = new Item(nameText, priceText);
+				if(vowels.indexOf(Character.toLowerCase(nameText.charAt(0))) != -1){
+					lbldisplay.setText("<html>An " + nameText + " was added to your inventory.<html>");
 				} else {
-					String vowels = "aeiou";
-					nameText = nameTextField.getText();
-					Item item = new Item(nameText, priceText);
-					if(vowels.indexOf(Character.toLowerCase(nameText.charAt(0))) != -1){
-						lbldisplay.setText("<html>An " + nameText + " was added to your inventory.<html>");
-					} else {
-						lbldisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
-					}
+					lbldisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
+				} if(priceTextField.getText().isEmpty()){
+					priceText = 0.00;
+				} else {
 					priceText = Double.parseDouble(priceTextField.getText());
-					ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceText);
-					ItemPanel.yPos += 75;
-					scrollPanel.add(panel);
-				
-					hashes.put(panel, item);
-				
-					nameTextField.setText("");
-					priceTextField.setText("");
-				
-					System.out.println("\nItem Name: \tItem Price:");
-					for(ItemPanel panels : hashes.keySet()){
-						System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
-					}
-					lbldisplay.setText("");
-					
-					refresh();
 				}
+				ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceText);
+				ItemPanel.yPos += 75;
+				scrollPanel.add(panel);
 				
+				hashes.put(panel, item);
+				
+				nameTextField.setText("");
+				priceTextField.setText("");
+			
+				System.out.println("\nItem Name: \tItem Price:");
+				for(ItemPanel panels : hashes.keySet()){
+					System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
+				}
+				lbldisplay.setText("");
+					
+				refresh();
 			}
 		});
 		contentPane.add(btnAddItem);
@@ -146,8 +145,8 @@ public class Main extends JFrame {
 		btnSearch.setBounds(5, 193, 269, 64);
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				String text = searchTextField.getText();
 				for(ItemPanel panel : hashes.keySet()){
-					String text = searchTextField.getText();
 					if(panel.getName().equals(text)){
 						lbldisplay.setText("In stock!");
 						refresh();
@@ -181,6 +180,13 @@ public class Main extends JFrame {
 						btnAddItem.setEnabled(false);
 					} else {
 						btnAddItem.setEnabled(true);
+					}
+					if(priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
+						btnAddItem.setEnabled(false);
+						priceTextField.setBackground(Color.red);
+					} else {
+						btnAddItem.setEnabled(true);
+						priceTextField.setBackground(Color.white);
 					}
 					try{
 						sleep(50);
