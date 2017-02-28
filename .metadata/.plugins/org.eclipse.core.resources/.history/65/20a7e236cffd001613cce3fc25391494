@@ -97,6 +97,7 @@ public class Main extends JFrame {
 				for(ItemPanel panels : hashes.keySet()){
 					System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
 				}
+				lblAddItemDisplay.setText("");
 					
 				refresh();
 			}
@@ -146,11 +147,11 @@ public class Main extends JFrame {
 				String text = searchTextField.getText();
 				for(ItemPanel panel : hashes.keySet()){
 					if(panel.getName().equals(text)){
-						lblSearchDisplay.setText("In stock!");
+						lblAddItemDisplay.setText("In stock!");
 						refresh();
 						break;
 					} else {
-						lblSearchDisplay.setText("Out of stock.");
+						lblAddItemDisplay.setText("Out of stock.");
 						refresh();
 					}
 				}
@@ -178,21 +179,22 @@ public class Main extends JFrame {
 			@Override
 			public void run(){
 				while(true){
-					if(nameTextField.getText().isEmpty() || priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
-						if(priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
-							priceTextField.setBackground(Color.red);
-							btnAddItem.setEnabled(false);
-						} else {
-							priceTextField.setBackground(Color.white);
-							btnAddItem.setEnabled(false);
-						}
+					if(nameTextField.getText().isEmpty()){
+						btnAddItem.setEnabled(false);
 					} else {
 						btnAddItem.setEnabled(true);
+					}
+					if(priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
+						btnAddItem.setEnabled(false);
+						priceTextField.setBackground(Color.red);
+					} else {
+						btnAddItem.setEnabled(true);
+						priceTextField.setBackground(Color.white);
 					}
 					try{
 						sleep(50);
 					} catch (InterruptedException e) {
-						e.printStackTrace();
+					e.printStackTrace();
 					}
 				}
 			}

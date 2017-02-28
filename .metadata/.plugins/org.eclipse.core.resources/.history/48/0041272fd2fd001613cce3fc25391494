@@ -179,13 +179,12 @@ public class Main extends JFrame {
 			public void run(){
 				while(true){
 					if(nameTextField.getText().isEmpty() || priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
-						if(priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
+						while(priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
 							priceTextField.setBackground(Color.red);
+							System.out.println("Oddly it's red...");
 							btnAddItem.setEnabled(false);
-						} else {
-							priceTextField.setBackground(Color.white);
-							btnAddItem.setEnabled(false);
-						}
+						} 
+						btnAddItem.setEnabled(false);
 					} else {
 						btnAddItem.setEnabled(true);
 					}

@@ -183,7 +183,6 @@ public class Main extends JFrame {
 							priceTextField.setBackground(Color.red);
 							btnAddItem.setEnabled(false);
 						} else {
-							priceTextField.setBackground(Color.white);
 							btnAddItem.setEnabled(false);
 						}
 					} else {
