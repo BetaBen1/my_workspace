@@ -139,12 +139,22 @@ public class Main extends JFrame {
 		lblAddItemDisplay.setBounds(5, 133, 269, 40);
 		contentPane.add(lblAddItemDisplay);
 		
+		searchTextField = new JTextField();
+		searchTextField.setBounds(5, 166, 269, 26);
+		contentPane.add(searchTextField);
+		searchTextField.setColumns(10);
+		
+		lblSearchDisplay = new JLabel("");
+		lblSearchDisplay.setBounds(5, 269, 269, 29);
+		contentPane.add(lblSearchDisplay);
+		
 		btnSearch = new JButton("Search");
 		btnSearch.setBounds(5, 193, 269, 64);
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				String text = searchTextField.getText();
 				for(ItemPanel panel : hashes.keySet()){
+					System.out.println(panel.getName());
 					if(panel.getName().equals(text)){
 						lblSearchDisplay.setText("In stock!");
 						refresh();
@@ -159,15 +169,6 @@ public class Main extends JFrame {
 		contentPane.add(btnSearch);
 		
 		contentPane.getRootPane().setDefaultButton(btnAddItem);
-		
-		searchTextField = new JTextField();
-		searchTextField.setBounds(5, 166, 269, 26);
-		contentPane.add(searchTextField);
-		searchTextField.setColumns(10);
-		
-		lblSearchDisplay = new JLabel("");
-		lblSearchDisplay.setBounds(5, 269, 269, 29);
-		contentPane.add(lblSearchDisplay);
 		
 		runThread();
 		

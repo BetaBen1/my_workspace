@@ -46,7 +46,6 @@ public class ItemPanel extends JPanel {
 		int oldPos = panel.getY();
 		panel.remove(this);
 		Main.hashes.remove(this);
-		//Main.library.removeItem(Main.hashes.geasdft(this));
 		System.out.println("\nItem Name: \tItem Price:");
 		for(ItemPanel panels : Main.hashes.keySet()){
 			if(panels.getY()>oldPos){

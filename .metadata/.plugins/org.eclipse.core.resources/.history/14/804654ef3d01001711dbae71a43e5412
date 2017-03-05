@@ -1,5 +1,6 @@
 package betaben.inventoryv2;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.List;
@@ -27,17 +28,16 @@ public class Main extends JFrame {
 	JLabel lblInventory;
 	JLabel lblItemName;
 	JLabel lblItemPrice;
-	JLabel lbldisplay;
+	JLabel lblAddItemDisplay;
 	JButton btnAddItem;
 	JTextField nameTextField;
 	JTextField priceTextField;
 	JButton btnSearch;
 	JTextField searchTextField;
+	JLabel lblSearchDisplay;
 	
 	public static String nameText;
 	public static Double priceText;
-	
-	String[] letters = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 	
 	public static HashMap<ItemPanel, Item> hashes = new HashMap<ItemPanel, Item>();
 	
@@ -76,21 +76,12 @@ public class Main extends JFrame {
 				nameText = nameTextField.getText();
 				Item item = new Item(nameText, priceText);
 				if(vowels.indexOf(Character.toLowerCase(nameText.charAt(0))) != -1){
-					lbldisplay.setText("<html>An " + nameText + " was added to your inventory.<html>");
+					lblAddItemDisplay.setText("<html>An " + nameText + " was added to your inventory.<html>");
 				} else {
-					lbldisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
-				}
-				if(priceTextField.getText().isEmpty()){
+					lblAddItemDisplay.setText("<html>A " + nameText + " was added to your inventory.<html>");
+				} if(priceTextField.getText().isEmpty()){
 					priceText = 0.00;
-					lbldisplay.setText("");
 				} else {
-					for(String i : letters){
-						if(priceTextField.getText().matches(i)){
-							lbldisplay.setText("Error: Enter a valid price.");
-							break;
-						}
-					}
-					lbldisplay.setText("");
 					priceText = Double.parseDouble(priceTextField.getText());
 				}
 				ItemPanel panel = new ItemPanel(scrollPanel, nameText, "$" + priceText);
@@ -101,12 +92,12 @@ public class Main extends JFrame {
 				
 				nameTextField.setText("");
 				priceTextField.setText("");
-				
+			
 				System.out.println("\nItem Name: \tItem Price:");
 				for(ItemPanel panels : hashes.keySet()){
 					System.out.println(hashes.get(panels).getName() + "\t\t $" + hashes.get(panels).getPrice());
 				}
-				
+					
 				refresh();
 			}
 		});
@@ -144,22 +135,31 @@ public class Main extends JFrame {
 		contentPane.add(priceTextField);
 		priceTextField.setColumns(10);
 		
-		lbldisplay = new JLabel("");
-		lbldisplay.setBounds(5, 255, 269, 40);
-		contentPane.add(lbldisplay);
+		lblAddItemDisplay = new JLabel("");
+		lblAddItemDisplay.setBounds(5, 133, 269, 40);
+		contentPane.add(lblAddItemDisplay);
+		
+		searchTextField = new JTextField();
+		searchTextField.setBounds(5, 166, 269, 26);
+		contentPane.add(searchTextField);
+		searchTextField.setColumns(10);
+		
+		lblSearchDisplay = new JLabel("");
+		lblSearchDisplay.setBounds(5, 269, 269, 29);
+		contentPane.add(lblSearchDisplay);
 		
 		btnSearch = new JButton("Search");
 		btnSearch.setBounds(5, 193, 269, 64);
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				String text = searchTextField.getText();
 				for(ItemPanel panel : hashes.keySet()){
-					String text = searchTextField.getText();
 					if(panel.getName().equals(text)){
-						lbldisplay.setText("In stock!");
+						lblSearchDisplay.setText("In stock!");
 						refresh();
 						break;
 					} else {
-						lbldisplay.setText("Out of stock.");
+						lblSearchDisplay.setText("Out of stock.");
 						refresh();
 					}
 				}
@@ -168,11 +168,6 @@ public class Main extends JFrame {
 		contentPane.add(btnSearch);
 		
 		contentPane.getRootPane().setDefaultButton(btnAddItem);
-		
-		searchTextField = new JTextField();
-		searchTextField.setBounds(5, 166, 269, 26);
-		contentPane.add(searchTextField);
-		searchTextField.setColumns(10);
 		
 		runThread();
 		
@@ -183,15 +178,21 @@ public class Main extends JFrame {
 			@Override
 			public void run(){
 				while(true){
-					if(nameTextField.getText().isEmpty()){
-						btnAddItem.setEnabled(false);
+					if(nameTextField.getText().isEmpty() || priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
+						if(priceTextField.getText().matches(".*[a-z].*") || priceTextField.getText().matches(".*[A-Z].*")){
+							priceTextField.setBackground(Color.red);
+							btnAddItem.setEnabled(false);
+						} else {
+							priceTextField.setBackground(Color.white);
+							btnAddItem.setEnabled(false);
+						}
 					} else {
 						btnAddItem.setEnabled(true);
 					}
 					try{
 						sleep(50);
 					} catch (InterruptedException e) {
-					e.printStackTrace();
+						e.printStackTrace();
 					}
 				}
 			}
