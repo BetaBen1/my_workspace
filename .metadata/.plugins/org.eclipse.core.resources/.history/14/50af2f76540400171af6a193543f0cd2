@@ -25,11 +25,8 @@ public class Main extends JFrame {
 	JButton btnSubmit;
 	
 	public int selection;
-	public int n;
-	public int amountSelected = 0;
 	
 	public Random rand = new Random();
-	private JButton btnBegin;
 
 	/**
 	 * Launch the application.
@@ -58,9 +55,9 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 160, 73, 0};
-		gbl_contentPane.rowHeights = new int[]{64, 185, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{185, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		btnDoor1 = new JToggleButton("Door 1");
@@ -71,25 +68,12 @@ public class Main extends JFrame {
 				btnDoor3.setSelected(false);
 			}
 		});
-		
-		btnBegin = new JButton("Begin");
-		GridBagConstraints gbc_btnBegin = new GridBagConstraints();
-		gbc_btnBegin.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBegin.gridx = 1;
-		gbc_btnBegin.gridy = 0;
-		btnBegin.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				findInt();
-			}
-		});
-		contentPane.add(btnBegin, gbc_btnBegin);
-		
 		btnDoor1.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_btnDoor1 = new GridBagConstraints();
 		gbc_btnDoor1.anchor = GridBagConstraints.WEST;
 		gbc_btnDoor1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDoor1.gridx = 0;
-		gbc_btnDoor1.gridy = 1;
+		gbc_btnDoor1.gridy = 0;
 		contentPane.add(btnDoor1, gbc_btnDoor1);
 		
 		btnDoor2 = new JToggleButton("Door 2");
@@ -103,12 +87,13 @@ public class Main extends JFrame {
 		GridBagConstraints gbc_btnDoor2 = new GridBagConstraints();
 		gbc_btnDoor2.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDoor2.gridx = 1;
-		gbc_btnDoor2.gridy = 1;
+		gbc_btnDoor2.gridy = 0;
 		contentPane.add(btnDoor2, gbc_btnDoor2);
 		
 		btnDoor3 = new JToggleButton("Door 3");
 		btnDoor3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				selection = 3;
 				btnDoor1.setSelected(false);
 				btnDoor2.setSelected(false);
 			}
@@ -117,7 +102,7 @@ public class Main extends JFrame {
 		gbc_btnDoor3.insets = new Insets(0, 0, 5, 0);
 		gbc_btnDoor3.anchor = GridBagConstraints.EAST;
 		gbc_btnDoor3.gridx = 2;
-		gbc_btnDoor3.gridy = 1;
+		gbc_btnDoor3.gridy = 0;
 		contentPane.add(btnDoor3, gbc_btnDoor3);
 		
 		btnSubmit = new JButton("Submit");
@@ -129,52 +114,40 @@ public class Main extends JFrame {
 		GridBagConstraints gbc_btnSubmit = new GridBagConstraints();
 		gbc_btnSubmit.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSubmit.gridx = 1;
-		gbc_btnSubmit.gridy = 2;
+		gbc_btnSubmit.gridy = 1;
 		contentPane.add(btnSubmit, gbc_btnSubmit);
 	
 //		runThread();
 	
 	}
 	
-	public void findInt(){
-		n = rand.nextInt(3)+1;
-		System.out.println("Correct Door: " + n);
-		btnSubmit.setEnabled(true);
-	}
-	
 	public void runGame(){
-		amountSelected+=1;
-		if(btnDoor1.isSelected()){
-			selection = 1;
-		}
-		if(btnDoor2.isSelected()){
-			selection = 2;
-		}
-		if(btnDoor3.isSelected()){
-			selection = 3;
-		}
-		if(amountSelected==2){
-			System.out.println("The game is over.");
-			btnSubmit.setEnabled(false);
-			if(selection == n){
-				System.out.println("You have won.");
-			}
-			if(selection != n){
-				System.out.println("You have lost. The correct answer was " + n);
-			}
-			
+		int n = rand.nextInt(3)+1;
+		System.out.println("Correct Door: " + n);
+		System.out.println("Your Choice: " + selection);
+		if(selection == n){
+			System.out.println("You chose the correct door.");
+		} 
+		if(selection != n){
+			System.out.println("You did not choose the correct door.");
 		} else {
-			if(selection == n){
-				System.out.println("You have won!!! The game is over.");
-			}
-			if(selection != n){
-				System.out.println("You did not choose the correct door.");
-				System.out.println("Choose another door.");
-			}
-			if(selection == 0){
-				System.out.println("You must first choose a door.");
-			}
+			System.out.println("You must first choose a door.");
 		}
 	}
 	
+	public void thread(){
+		Thread thread = new Thread(){
+			@Override
+			public void run(){
+				while(true){
+					try {
+						sleep(50);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+	}
+
 }

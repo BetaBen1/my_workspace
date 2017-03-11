@@ -26,7 +26,6 @@ public class Main extends JFrame {
 	
 	public int selection;
 	public int n;
-	public int amountSelected = 0;
 	
 	public Random rand = new Random();
 	private JButton btnBegin;
@@ -139,11 +138,9 @@ public class Main extends JFrame {
 	public void findInt(){
 		n = rand.nextInt(3)+1;
 		System.out.println("Correct Door: " + n);
-		btnSubmit.setEnabled(true);
 	}
 	
 	public void runGame(){
-		amountSelected+=1;
 		if(btnDoor1.isSelected()){
 			selection = 1;
 		}
@@ -153,27 +150,15 @@ public class Main extends JFrame {
 		if(btnDoor3.isSelected()){
 			selection = 3;
 		}
-		if(amountSelected==2){
-			System.out.println("The game is over.");
-			btnSubmit.setEnabled(false);
-			if(selection == n){
-				System.out.println("You have won.");
-			}
-			if(selection != n){
-				System.out.println("You have lost. The correct answer was " + n);
-			}
-			
+		System.out.println("Your Choice: " + selection);
+		if(selection == n){
+			System.out.println("You chose the correct door.");
+		} 
+		if(selection != n){
+			System.out.println("You did not choose the correct door.");
+			System.out.println("Choose another door.");
 		} else {
-			if(selection == n){
-				System.out.println("You have won!!! The game is over.");
-			}
-			if(selection != n){
-				System.out.println("You did not choose the correct door.");
-				System.out.println("Choose another door.");
-			}
-			if(selection == 0){
-				System.out.println("You must first choose a door.");
-			}
+			System.out.println("You must first choose a door.");
 		}
 	}
 	

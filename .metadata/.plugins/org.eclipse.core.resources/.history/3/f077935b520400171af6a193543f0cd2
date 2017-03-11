@@ -154,15 +154,15 @@ public class Main extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				String text = searchTextField.getText();
 				for(ItemPanel panel : hashes.keySet()){
-//					System.out.println(hashes.get(panel).getName());
-					if(hashes.get(panel).getName().equals(text)){
-						lblSearchDisplay.setText("In stock!");
-						refresh();
-						break;
-					} else {
-						lblSearchDisplay.setText("Out of stock.");
-						refresh();
-					}
+					System.out.println(panel.getName());
+//					if(panel.getName().equals(text)){
+//						lblSearchDisplay.setText("In stock!");
+//						refresh();
+//						break;
+//					} else {
+//						lblSearchDisplay.setText("Out of stock.");
+//						refresh();
+//					}
 				}
 			}
 		});

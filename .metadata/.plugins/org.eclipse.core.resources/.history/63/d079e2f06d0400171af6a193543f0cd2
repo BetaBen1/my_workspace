@@ -156,24 +156,19 @@ public class Main extends JFrame {
 		if(amountSelected==2){
 			System.out.println("The game is over.");
 			btnSubmit.setEnabled(false);
-			if(selection == n){
-				System.out.println("You have won.");
-			}
-			if(selection != n){
-				System.out.println("You have lost. The correct answer was " + n);
-			}
-			
 		} else {
-			if(selection == n){
-				System.out.println("You have won!!! The game is over.");
-			}
-			if(selection != n){
-				System.out.println("You did not choose the correct door.");
-				System.out.println("Choose another door.");
-			}
-			if(selection == 0){
-				System.out.println("You must first choose a door.");
-			}
+			
+		}
+		System.out.println("Your Choice: " + selection);
+		if(selection == n){
+			System.out.println("You chose the correct door.");
+		} 
+		if(selection != n){
+			System.out.println("You did not choose the correct door.");
+			System.out.println("Choose another door.");
+		}
+		if(selection == 0){
+			System.out.println("You must first choose a door.");
 		}
 	}
 	
