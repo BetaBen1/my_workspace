@@ -1,6 +1,5 @@
 package betaben.montyhallparadox;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,13 +8,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 public class Main extends JFrame {
@@ -136,6 +133,8 @@ public class Main extends JFrame {
 		gbc_btnSubmit.gridy = 2;
 		contentPane.add(btnSubmit, gbc_btnSubmit);
 	
+//		runThread();
+	
 	}
 	
 	public void findInt(){
@@ -168,21 +167,10 @@ public class Main extends JFrame {
 		} else {
 			if(selection == n){
 				System.out.println("You have won!!! The game is over.");
-			}
 			if(selection != n){
-				goat = rand.nextInt(3)+1;
 				while(goat==n || goat==selection){
 					goat = rand.nextInt(3)+1;
 					System.out.println(goat);
-				}
-				if(goat==1){
-					btnDoor1.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-				}
-				if(goat==2){
-					btnDoor2.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-				}
-				if(goat==3){
-					btnDoor3.setBorder(BorderFactory.createLineBorder(Color.red, 1));
 				}
 				System.out.println("You did not choose the correct door.");
 				System.out.println("Choose another door.");
