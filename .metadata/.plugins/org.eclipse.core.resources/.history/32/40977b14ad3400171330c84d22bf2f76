@@ -1,0 +1,8 @@
+package betaben.main;
+
+public class Quote {
+
+	private String quote;
+	private String quotee;
+	
+}
