@@ -1,0 +1,11 @@
+package betaben.game;
+
+public class Board {
+	
+	private String[][] board;
+	
+	public Board(int row, int col){
+		board = new String[row][col];
+	}
+	
+}
