@@ -1,0 +1,36 @@
+package betaben.game;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+//		Board b = new Board(20, 20);
+//		b.setValue(1, 1, "Yellow");
+//		
+//		
+//		for(int r = 0; r < b.getNumRows(); r++){
+//			for(int c = 0; c < b.getNumCols(); c++){
+//				System.out.print("[" + b.getValue(r, c) + "]" + " ");	
+//			}
+//			System.out.println();
+//		}
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter String");
+        try {
+			String s = br.readLine();
+			System.out.println(s);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        int n = br.nextInt();
+        
+	}
+
+}

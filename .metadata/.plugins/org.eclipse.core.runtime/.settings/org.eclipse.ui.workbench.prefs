@@ -19,4 +19,5 @@ org.eclipse.mylyn.wikitext.ui.presentation.textFont=1|SF Mono|12.0|0|COCOA|1|;
 org.eclipse.pde.internal.ui.compare.ManifestContentMergeViewer=1|SF Mono|12.0|0|COCOA|1|;
 org.eclipse.pde.internal.ui.compare.PluginContentMergeViewer=1|SF Mono|12.0|0|COCOA|1|;
 org.eclipse.recommenders.snipmatch.rcp.searchTextFont=1|SF Mono|12.0|0|COCOA|1|;
+org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\n<org.eclipse.ui.commands/>
 org.eclipse.wst.sse.ui.textfont=1|SF Mono|12.0|0|COCOA|1|;

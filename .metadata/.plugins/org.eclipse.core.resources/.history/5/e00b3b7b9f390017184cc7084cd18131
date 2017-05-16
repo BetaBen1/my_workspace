@@ -1,0 +1,37 @@
+package betaben.game;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		while(true){
+			
+			Scanner rowReader = new Scanner(System.in);
+			System.out.println("Enter row: ");
+			int row = rowReader.nextInt();
+		
+			Scanner colReader = new Scanner(System.in);
+			System.out.println("Enter column: ");
+			int col = colReader.nextInt();
+			
+			Scanner colorReader = new Scanner(System.in);
+			System.out.println("Enter color: ");
+			String color = colorReader.next();
+			
+			Board b = new Board(20, 20);
+			
+			b.setValue(row, col, );
+			
+			for(int r = 0; r < b.getNumRows(); r++){
+				for(int c = 0; c < b.getNumCols(); c++){
+					System.out.print("[" + b.getValue(r, c) + "]" + " ");	
+				}
+				System.out.println();
+			}
+		}
+        
+	}
+
+}

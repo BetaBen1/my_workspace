@@ -3,9 +3,18 @@ package betaben.game;
 public class Board {
 	
 	private String[][] board;
+	private int numRows;
+	private int numCols;
 	
-	public Board(int row, int col){
-		board = new String[row][col];
+	public Board(int rows, int cols){
+		board = new String[rows][cols];
+		numRows = rows;
+		numCols = cols;
+		for(int r = 0; r < numRows; r++){
+			for(int c = 0; c < numCols; c++){
+				board[r][c] = "White";
+			}
+		}
 	}
 	
 	public String getValue(int row, int col){
@@ -16,6 +25,12 @@ public class Board {
 		board[row][col] = color;
 	}
 	
+	public int getNumRows(){
+		return numRows;
+	}
 	
+	public int getNumCols(){
+		return numCols;
+	}
 	
 }

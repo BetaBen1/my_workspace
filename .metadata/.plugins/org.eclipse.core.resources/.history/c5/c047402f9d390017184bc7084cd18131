@@ -1,0 +1,30 @@
+package betaben.game;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+//		Board b = new Board(20, 20);
+//		b.setValue(1, 1, "Yellow");
+//		
+//		
+//		for(int r = 0; r < b.getNumRows(); r++){
+//			for(int c = 0; c < b.getNumCols(); c++){
+//				System.out.print("[" + b.getValue(r, c) + "]" + " ");	
+//			}
+//			System.out.println();
+//		}
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter String");
+        String s = br.readLine();
+        System.out.print("Enter Integer:");
+        try{
+            int i = Integer.parseInt(br.readLine());
+        }catch(NumberFormatException nfe){
+            System.err.println("Invalid Format!");
+        }
+
+	}
+
+}

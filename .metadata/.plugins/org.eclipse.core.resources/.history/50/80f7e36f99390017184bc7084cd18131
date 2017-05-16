@@ -1,0 +1,18 @@
+package betaben.game;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Board b = new Board(5,5);
+		
+		for(int r = 0; r < b.getNumRows(); r++){
+			for(int c = 0; c < b.getNumCols(); c++){
+				System.out.print(b.getValue(r, c));
+			}
+			System.out.println();
+		}
+
+	}
+
+}
